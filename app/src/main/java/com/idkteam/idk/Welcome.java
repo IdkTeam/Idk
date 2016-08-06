@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
+// make sure commit succeeded
 /**
  * The user welcome class to the app, set as launcher
  * @author Danny
