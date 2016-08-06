@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Idk</string>
+    <string name="login_btn_str">Log In</string>
+    <string name="username_hint_str">Username</string>
+    <string name="password_hint_str">Password</string>
+    <string name="guest_txt_str">Forgot my password</string>
+    <string name="goToLogin_btn_str">Log In</string>
+    <string name="goToSignUp_btn_str">Sign Up</string>
+    <string name="goToGuest_btn_str">Enter as guest</string>
+    <string name="confirmPassword_hint_str">Confirm password</string>
+    <string name="email_hint_str">Email</string>
+    <string name="signUp_btn_str">Sign Up</string>
+    <string name="cancel_btn_str">Cancel</string>
+    <string name="remember_chkBox_str">Remember me</string>
+    <string name="errorLogin_lbl_str">Wrong username or password!</string>
+</resources>
