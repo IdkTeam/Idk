@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_about"
+        android:title="About"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_settings"
+        android:title="Settings"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu_login"
+        android:title="Login"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu_search"
+        android:title="@string/menu_search_str"
+        android:icon="@drawable/ic_action_search"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView"/>
+
+    <item
+        android:id="@+id/menu_add_btn"
+        android:title="@string/add_btn_str"
+        android:icon="@drawable/ic_action_add"
+        app:showAsAction="ifRoom" >
+    </item>
+</menu>

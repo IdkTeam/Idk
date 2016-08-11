@@ -1,5 +1,6 @@
 package com.idkteam.idk;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,8 +8,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+/**
+ * The class takes care of the users facility selection
+ * @author Danny
+ */
 public class ChooseFacility extends AppCompatActivity {
 
+    //variable definition
     private Spinner facilitySpinner;
     private Spinner yearSpinner;
 
@@ -18,7 +24,7 @@ public class ChooseFacility extends AppCompatActivity {
         setContentView(R.layout.activity_choose_facility);
 
         //TODO show the facilities from the database
-        String facilities[] = {"University/College", "High school", "Middle school", "Elementary school", "Other"};
+        String facilities[] = {"Select facility", "University/College", "High school", "Middle school", "Elementary school", "Other"};
 
         facilitySpinner = (Spinner)findViewById(R.id.facility_spnr);
         yearSpinner = (Spinner)findViewById(R.id.year_spnr);
@@ -43,14 +49,19 @@ public class ChooseFacility extends AppCompatActivity {
 
     private void yearSelection(int position){
 
+        String years[] = {};
+        ArrayAdapter<String> yearAdapter;
+
+        position -= 1; //TODO remove this, and set a normal spinner hint message
+
         switch (position){
 
             case 0:
-                universitySelected();
+                years = universitySelected();
                 break;
 
             case 1:
-                highSchoolSelected();
+                years = highSchoolSelected();
                 break;
 
             case 2:
@@ -66,17 +77,19 @@ public class ChooseFacility extends AppCompatActivity {
                 break;
 
         }
-    }
 
-    private void universitySelected(){
-        String years[] = {"first year", "second year", "third year"};
-        ArrayAdapter<String> yearAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, years);
+        yearAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, years);
         yearSpinner.setAdapter(yearAdapter);
-
     }
 
-    private void highSchoolSelected(){
+    private String[] universitySelected() {
+        String years[] = {"1st", "2nd", "3rd", "4th", "5th", "6th", "7th"};
+        return years;
+    }
 
+    private String[] highSchoolSelected(){
+        String years[] = {"Freshman", "Sophomore", "Junior", "Senior"};
+        return years;
     }
 
     private void middleSchoolSelected(){
@@ -89,5 +102,27 @@ public class ChooseFacility extends AppCompatActivity {
 
     private void otherSelected(){
 
+    }
+
+    /**
+     * The method sends the user back to the welcome activity when the button is clicked
+     * @param view view
+     */
+    public void cancel_btnClicked(View view){
+
+        Intent i = new Intent(this, Welcome.class);
+
+        startActivity(i);
+    }
+
+    /**
+     * The method signs the user in, and sends him to the main activity
+     * @param view view
+     */
+    public void submit_btnClicked(View view){
+        //TODO sign the user in with the given facility and previous information
+
+        Intent i = new Intent(this, Main.class);
+        startActivity(i);
     }
 }

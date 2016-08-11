@@ -3,6 +3,9 @@ package com.idkteam.idk;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.GridLayout;
@@ -20,11 +23,44 @@ public class SignUp extends AppCompatActivity {
     private EditText password;
     private EditText confirmPassword;
     private EditText email;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        toolbar = (Toolbar)findViewById(R.id.toolbar_intro);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Sign Up");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.intro_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent i;
+
+        switch (item.getItemId()) {
+            case R.id.cancel_btn:
+
+                //TODO this might not be the best way to go back to the welcome activity
+                i = new Intent(this, Welcome.class);
+                startActivity(i);
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     /**
@@ -72,7 +108,7 @@ public class SignUp extends AppCompatActivity {
             username.setError("Must fill username");
         }
 
-        else if(name.length() < 2){ //TODO check how many letters the username contains
+        else if(!Validation.containsLetters(name)){
             username.setError("Username must contain at least 2 letters");
         }
 

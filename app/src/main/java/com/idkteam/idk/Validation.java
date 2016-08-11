@@ -23,12 +23,32 @@ public class Validation {
     public static boolean containsLegalNameChars(String str){
 
         for(char c : str.toCharArray()){
+
             if(!Character.isLetterOrDigit(c)){
                 return false;
             }
         }
 
         return true;
+    }
+
+    /**
+     * The method checks if the string contains at least 2 letters
+     * @param str string input
+     * @return does the string contain 2 letters
+     */
+    public static boolean containsLetters(String str){
+
+        int counter = 0;
+
+        for(char c : str.toCharArray()){
+
+            if(Character.isLetter(c)){
+                counter++;
+            }
+        }
+
+        return counter > 1;
     }
 
     /**
