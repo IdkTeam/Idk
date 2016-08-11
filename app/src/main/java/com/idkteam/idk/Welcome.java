@@ -17,13 +17,6 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_welcome);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setTitle(R.string.welcome_title_str);
-        getSupportActionBar().setSubtitle("my subtitle");
-        getSupportActionBar().setIcon(R.drawable.ic_toolbar_welcome);
     }
 
     @Override

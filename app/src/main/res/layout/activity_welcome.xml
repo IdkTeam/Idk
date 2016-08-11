@@ -6,8 +6,6 @@
     android:background="#006699"
     tools:context="com.idkteam.idk.Welcome">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar_welcome"/>
 
     <ImageView
         android:id="@+id/logo_img"

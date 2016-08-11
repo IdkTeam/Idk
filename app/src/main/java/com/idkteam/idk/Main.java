@@ -16,18 +16,17 @@ import android.widget.TextView;
 
 /**
  * The main activity class, here the user sees all the posts
+ *
  * @author Danny
  */
 public class Main extends AppCompatActivity {
-
-    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar_intro);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_intro);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Idk");
@@ -43,11 +42,15 @@ public class Main extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        Intent i;
-
         switch (item.getItemId()) {
 
-            case R.id.menu_add_btn:
+            case R.id.menu_profile:                              // settings button clicked
+
+                Intent i = new Intent(this, UserProfile.class);
+                startActivity(i);
+                return true;
+
+            case R.id.menu_add_btn:                             // add button clicked
 
                 addOptionsShow();
                 return true;
@@ -60,9 +63,12 @@ public class Main extends AppCompatActivity {
 
     }
 
-    public void addOptionsShow(){
+    /**
+     * The method creates a popup menu from which the user selects a post type: Image/Text
+     */
+    public void addOptionsShow() {
         final DialogIconItem[] items = {
-                new DialogIconItem("Image post",android.R.drawable.ic_menu_camera),
+                new DialogIconItem("Image post", android.R.drawable.ic_menu_camera),
                 new DialogIconItem("Text post", android.R.drawable.ic_menu_edit),
         };
 
@@ -70,11 +76,11 @@ public class Main extends AppCompatActivity {
                 this,
                 android.R.layout.select_dialog_item,
                 android.R.id.text1,
-                items){
+                items) {
             public View getView(int position, View convertView, ViewGroup parent) {
                 //Use super class to create the View
                 View v = super.getView(position, convertView, parent);
-                TextView tv = (TextView)v.findViewById(android.R.id.text1);
+                TextView tv = (TextView) v.findViewById(android.R.id.text1);
 
                 //Put the image on the TextView
                 tv.setCompoundDrawablesWithIntrinsicBounds(items[position].icon, 0, 0, 0);
