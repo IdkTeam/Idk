@@ -6,6 +6,6 @@
     tools:context="com.idkteam.idk.Main">
 
     <include layout="@layout/toolbar"
-        android:id="@+id/toolbar_intro"/>
+        android:id="@+id/toolbar_intro" />
 
 </RelativeLayout>
