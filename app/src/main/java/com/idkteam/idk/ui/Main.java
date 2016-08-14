@@ -28,7 +28,7 @@ import java.util.ArrayList;
  *
  * @author Danny
  */
-public class Main extends AppCompatActivity implements MainAdapter.ItemCliclCallBack {
+public class Main extends AppCompatActivity implements MainAdapter.ItemClickCallBack {
 
     private static final String BUNDLE_EXTRAS = "BUNDLE_EXTRAS";
     private static final String EXTRA_QUOTE = "EXTRA_QUOTE";
