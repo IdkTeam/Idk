@@ -1,4 +1,4 @@
-package com.idkteam.idk;
+package com.idkteam.idk.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,8 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.GridLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.idkteam.idk.R;
 
 /**
  * The user sign up class to the app

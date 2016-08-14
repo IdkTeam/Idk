@@ -1,4 +1,4 @@
-package com.idkteam.idk;
+package com.idkteam.idk.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.idkteam.idk.R;
 
 /**
  * The user login class to the app

@@ -1,4 +1,4 @@
-package com.idkteam.idk;
+package com.idkteam.idk.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.idkteam.idk.R;
 
 /**
  * The class takes care of the users facility selection

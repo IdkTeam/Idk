@@ -3,9 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.idkteam.idk.Main">
+    tools:context=".ui.Main">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar_intro" />
+    <include
+        android:id="@+id/toolbar_intro"
+        layout="@layout/toolbar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

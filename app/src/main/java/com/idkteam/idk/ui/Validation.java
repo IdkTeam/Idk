@@ -1,4 +1,4 @@
-package com.idkteam.idk;
+package com.idkteam.idk.ui;
 
 /**
  * The class takes care of the validations of the different user inputs

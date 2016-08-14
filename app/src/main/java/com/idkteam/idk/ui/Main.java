@@ -1,10 +1,12 @@
-package com.idkteam.idk;
+package com.idkteam.idk.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,22 +16,45 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.idkteam.idk.R;
+import com.idkteam.idk.adapter.MainAdapter;
+import com.idkteam.idk.model.DemoData;
+import com.idkteam.idk.model.PostItem;
+
+import java.util.ArrayList;
+
 /**
  * The main activity class, here the user sees all the posts
  *
  * @author Danny
  */
-public class Main extends AppCompatActivity {
+public class Main extends AppCompatActivity implements MainAdapter.ItemCliclCallBack {
+
+    private static final String BUNDLE_EXTRAS = "BUNDLE_EXTRAS";
+    private static final String EXTRA_QUOTE = "EXTRA_QUOTE";
+    private static final String EXTRA_ATTR = "EXTRA_ATTR";
+    private RecyclerView recView;
+    private MainAdapter adapter;
+    private ArrayList listData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Add toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_intro);
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Idk");
+
+        //Add RecycleView
+        listData = (ArrayList) DemoData.getListData();
+        recView = (RecyclerView)findViewById(R.id.main_recycleView);
+        recView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new MainAdapter(DemoData.getListData(), this);
+        recView.setAdapter(adapter);
+        adapter.setItemCliclCallBack(this);
+
     }
 
     @Override
@@ -68,8 +93,8 @@ public class Main extends AppCompatActivity {
      */
     public void addOptionsShow() {
         final DialogIconItem[] items = {
-                new DialogIconItem("Image post", android.R.drawable.ic_menu_camera),
-                new DialogIconItem("Text post", android.R.drawable.ic_menu_edit),
+                new DialogIconItem("New image post", android.R.drawable.ic_menu_camera),
+                new DialogIconItem("New text post", android.R.drawable.ic_menu_edit),
         };
 
         ListAdapter adapter = new ArrayAdapter<DialogIconItem>(
@@ -101,5 +126,36 @@ public class Main extends AppCompatActivity {
                         //...
                     }
                 }).show();
+    }
+
+    @Override
+    public void onItemClick(int p) {
+
+        PostItem item = (PostItem)listData.get(p);
+        Intent i = new Intent(this, PostDetail.class);
+        Bundle extras = new Bundle();
+
+        extras.putString(EXTRA_QUOTE, item.getTitle());
+        extras.putString(EXTRA_ATTR, item.getSubTitle());
+        i.putExtra(BUNDLE_EXTRAS, extras);
+        startActivity(i);
+
+    }
+
+    @Override
+    public void onSecondaryIconClick(int p) {
+
+        PostItem item = (PostItem) listData.get(p);
+        //update our data
+        if (item.isFavorite()){
+            item.setFavorite(false);
+        } else {
+            item.setFavorite(true);
+        }
+        //pass new data to adapter and update
+        //TODO should not pass data like that if handling data from data base!!!
+        adapter.setListData(listData);
+        adapter.notifyDataSetChanged();
+
     }
 }

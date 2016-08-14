@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#006699"
-    tools:context="com.idkteam.idk.Welcome">
+    tools:context=".ui.Welcome">
 
 
     <ImageView
@@ -34,37 +34,39 @@
             android:layout_gravity="fill_horizontal"
             android:layout_row="0"
             android:height="60dp"
-            android:background="@drawable/top_button_bg"
+            android:background="@drawable/welcome_button_bg"
             android:onClick="goToLogIn_btnClicked"
             android:text="@string/goToLogin_btn_str"
-            android:textColor="#429AFF"
+            android:textColor="#ffffff"
             android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/goToSignUp_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_column="0"
             android:layout_gravity="fill_horizontal"
             android:layout_row="1"
             android:height="60dp"
-            android:background="@drawable/middle_button_bg"
+            android:background="@drawable/welcome_button_bg"
             android:onClick="goToSignUp_btnClicked"
             android:text="@string/goToSignUp_btn_str"
-            android:textColor="#429AFF"
+            android:textColor="#ffffff"
             android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/goToGuest_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_column="0"
             android:layout_gravity="fill_horizontal"
             android:layout_row="2"
             android:height="60dp"
-            android:background="@drawable/bottom_button_bg"
+            android:background="@drawable/welcome_button_bg"
             android:text="@string/goToGuest_btn_str"
-            android:textColor="#429AFF"
+            android:textColor="#ffffff"
             android:textAllCaps="false"/>
     </GridLayout>
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#006699"
-    tools:context="com.idkteam.idk.Login">
+    tools:context=".ui.Login">
 
     <include
         android:id="@+id/toolbar_intro"

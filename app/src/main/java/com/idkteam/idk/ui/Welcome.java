@@ -1,11 +1,14 @@
-package com.idkteam.idk;
+package com.idkteam.idk.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+
+import com.idkteam.idk.R;
+import com.idkteam.idk.ui.Login;
+import com.idkteam.idk.ui.SignUp;
 
 /**
  * The user welcome class to the app, set as launcher

@@ -1,4 +1,4 @@
-package com.idkteam.idk;
+package com.idkteam.idk.ui;
 
 public class DialogIconItem {
 
