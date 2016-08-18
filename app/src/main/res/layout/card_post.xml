@@ -26,9 +26,7 @@
                 android:background="@color/colorPrimary"
                 android:padding="36dp"
                 android:src="@mipmap/logo"
-                android:tint="#FFFFFF"
-
-                />
+                android:tint="#FFFFFF" />
 
             <TextView
                 android:id="@+id/lbl_post_sub_title"
@@ -45,21 +43,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/im_post_icon"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:paddingLeft="16dp" />
 
 
-            <Button
-                android:id="@+id/btn_card_load"
-                android:layout_width="wrap_content"
-                android:layout_height="56dp"
+            <GridLayout
+                android:id="@+id/card_btn_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/lbl_post_text"
-                android:background="@android:color/transparent"
-                android:textColor="@color/colorAccent"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="LOAD" />
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/comments_lbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:text="0 comments"
+                    android:paddingLeft="16dp"
+                    android:textSize="17sp" />
+
+                <Button
+                    android:id="@+id/btn_card_load"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_gravity="start"
+                    android:layout_row="1"
+                    android:background="@android:color/transparent"
+                    android:text="LOAD"
+                    android:textColor="@color/colorAccent" />
+
+                <Button
+                    android:id="@+id/btn_card_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_row="1"
+                    android:background="@android:color/transparent"
+                    android:text="SHARE"
+                    android:textColor="@color/colorAccent" />
+
+                <Button
+                    android:id="@+id/btn_card_report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_row="1"
+                    android:background="@android:color/transparent"
+                    android:text="REPORT"
+                    android:textColor="@color/colorAccent" />
+            </GridLayout>
 
         </RelativeLayout>
 

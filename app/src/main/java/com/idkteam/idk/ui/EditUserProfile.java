@@ -8,28 +8,23 @@ import android.view.View;
 
 import com.idkteam.idk.R;
 
-/**
- * The users profile class
- * @author Danny
- */
-public class UserProfile extends AppCompatActivity {
+public class EditUserProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        setContentView(R.layout.activity_edit_user_profile);
 
         //Add toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_intro);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Profile");
+        getSupportActionBar().setTitle("Edit Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //adds a home redirection button to .Main
     }
 
-    public void edit_btnClicked(View view){
-        Intent i = new Intent(this, EditUserProfile.class);
+    public void edit_cancel_btnClicked(View view){
+        Intent i = new Intent(this, UserProfile.class);
         startActivity(i);
-
     }
 }

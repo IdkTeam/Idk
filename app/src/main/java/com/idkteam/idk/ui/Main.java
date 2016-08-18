@@ -49,11 +49,11 @@ public class Main extends AppCompatActivity implements MainAdapter.ItemClickCall
 
         //Add RecycleView
         listData = (ArrayList) DemoData.getListData();
-        recView = (RecyclerView)findViewById(R.id.main_recycleView);
+        recView = (RecyclerView) findViewById(R.id.main_recycleView);
         recView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MainAdapter(DemoData.getListData(), this);
         recView.setAdapter(adapter);
-        adapter.setItemCliclCallBack(this);
+        adapter.setItemClickCallBack(this);
 
     }
 
@@ -67,11 +67,19 @@ public class Main extends AppCompatActivity implements MainAdapter.ItemClickCall
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        Intent i;
+
         switch (item.getItemId()) {
 
-            case R.id.menu_profile:                              // settings button clicked
+            case R.id.menu_profile:                              // profile button clicked
 
-                Intent i = new Intent(this, UserProfile.class);
+                i = new Intent(this, UserProfile.class);
+                startActivity(i);
+                return true;
+
+            case R.id.menu_settings:                              // settings button clicked
+
+                i = new Intent(this, Settings.class);
                 startActivity(i);
                 return true;
 
@@ -131,7 +139,7 @@ public class Main extends AppCompatActivity implements MainAdapter.ItemClickCall
     @Override
     public void onItemClick(int p) {
 
-        PostItem item = (PostItem)listData.get(p);
+        PostItem item = (PostItem) listData.get(p);
         Intent i = new Intent(this, PostDetail.class);
         Bundle extras = new Bundle();
 
@@ -147,7 +155,7 @@ public class Main extends AppCompatActivity implements MainAdapter.ItemClickCall
 
         PostItem item = (PostItem) listData.get(p);
         //update our data
-        if (item.isFavorite()){
+        if (item.isFavorite()) {
             item.setFavorite(false);
         } else {
             item.setFavorite(true);

@@ -22,7 +22,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
 
     private List<PostItem> listData;
     private LayoutInflater inflater;
-    private ItemClickCallBack itemCliclCallBack;
+    private ItemClickCallBack itemClickCallBack;
 
     public interface ItemClickCallBack {
         void onItemClick(int p);
@@ -30,8 +30,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
 
     }
 
-    public void setItemCliclCallBack(final ItemClickCallBack itemCliclCallBack){
-        this.itemCliclCallBack = itemCliclCallBack;
+    public void setItemClickCallBack(final ItemClickCallBack itemCliclCallBack){
+        this.itemClickCallBack = itemCliclCallBack;
     }
 
     public MainAdapter(List<PostItem> listData, Context c) {
@@ -90,14 +90,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
             //container.setOnClickListener(this);
             load = (Button)itemView.findViewById(R.id.btn_card_load);
             load.setOnClickListener(this);
+            thumbnail.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
 
-            if(v.getId() == R.id.btn_card_load){
+            if(v.getId() == R.id.btn_card_load || v.getId() == R.id.im_post_icon){
 
-                itemCliclCallBack.onItemClick(getAdapterPosition());
+                itemClickCallBack.onItemClick(getAdapterPosition());
             }
             else{
 

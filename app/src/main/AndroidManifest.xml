@@ -30,7 +30,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.Main" />
         </activity>
-        <activity android:name=".ui.PostDetail"></activity>
+        <activity android:name=".ui.PostDetail" />
+        <activity
+            android:name=".ui.Settings"
+            android:parentActivityName=".ui.Main">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.Main" />
+        </activity>
+        <activity
+            android:name=".ui.EditUserProfile"
+            android:parentActivityName=".ui.Main">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.Main" />
+        </activity>
     </application>
 
 </manifest>
