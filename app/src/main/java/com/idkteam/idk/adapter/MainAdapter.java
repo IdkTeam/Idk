@@ -30,8 +30,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
 
     }
 
-    public void setItemClickCallBack(final ItemClickCallBack itemCliclCallBack){
-        this.itemClickCallBack = itemCliclCallBack;
+    public void setItemClickCallBack(final ItemClickCallBack itemClickCallBack){
+        this.itemClickCallBack = itemClickCallBack;
     }
 
     public MainAdapter(List<PostItem> listData, Context c) {

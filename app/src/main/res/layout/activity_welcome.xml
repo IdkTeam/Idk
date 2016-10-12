@@ -37,37 +37,38 @@
             android:background="@drawable/welcome_button_bg"
             android:onClick="goToLogIn_btnClicked"
             android:text="@string/goToLogin_btn_str"
-            android:textColor="#ffffff"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/goToSignUp_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_column="0"
             android:layout_gravity="fill_horizontal"
+            android:layout_marginTop="10dp"
             android:layout_row="1"
             android:height="60dp"
             android:background="@drawable/welcome_button_bg"
             android:onClick="goToSignUp_btnClicked"
             android:text="@string/goToSignUp_btn_str"
-            android:textColor="#ffffff"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/goToGuest_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_column="0"
             android:layout_gravity="fill_horizontal"
+            android:layout_marginTop="10dp"
             android:layout_row="2"
             android:height="60dp"
             android:background="@drawable/welcome_button_bg"
+            android:onClick="guest_btnClicked"
             android:text="@string/goToGuest_btn_str"
-            android:textColor="#ffffff"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
     </GridLayout>
 
 </RelativeLayout>

@@ -47,4 +47,9 @@ public class Welcome extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void guest_btnClicked(View view){
+        Intent i = new Intent(this, Main.class);
+        startActivity(i);
+    }
+
 }

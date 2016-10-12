@@ -22,8 +22,14 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/menu_login"
+        android:id="@+id/menu_history"
         android:orderInCategory="3"
+        android:title="History"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_login"
+        android:orderInCategory="4"
         android:title="Login"
         app:showAsAction="never" />
 
@@ -33,12 +39,12 @@
         android:title="@string/menu_search_str"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView"
-        android:orderInCategory="4"/>
+        android:orderInCategory="5"/>
 
     <item
         android:id="@+id/menu_add_btn"
         android:icon="@drawable/ic_action_add"
         android:title="@string/add_btn_str"
         app:showAsAction="ifRoom"
-        android:orderInCategory="5"/>
+        android:orderInCategory="6"/>
 </menu>

@@ -2,6 +2,9 @@ package com.idkteam.idk.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +21,7 @@ import android.widget.TextView;
 
 import com.idkteam.idk.R;
 import com.idkteam.idk.adapter.MainAdapter;
+import com.idkteam.idk.adapter.ViewPagerAdapter;
 import com.idkteam.idk.model.DemoData;
 import com.idkteam.idk.model.PostItem;
 
@@ -34,8 +38,12 @@ public class Main extends AppCompatActivity implements MainAdapter.ItemClickCall
     private static final String EXTRA_QUOTE = "EXTRA_QUOTE";
     private static final String EXTRA_ATTR = "EXTRA_ATTR";
     private RecyclerView recView;
-    private MainAdapter adapter;
+    private MainAdapter mainAdapter;
     private ArrayList listData;
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +51,42 @@ public class Main extends AppCompatActivity implements MainAdapter.ItemClickCall
         setContentView(R.layout.activity_main);
 
         // Add toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_intro);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_intro);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Idk");
 
-        //Add RecycleView
-        listData = (ArrayList) DemoData.getListData();
-        recView = (RecyclerView) findViewById(R.id.main_recycleView);
-        recView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MainAdapter(DemoData.getListData(), this);
-        recView.setAdapter(adapter);
-        adapter.setItemClickCallBack(this);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        final ViewPagerAdapter adapter = new ViewPagerAdapter
+                (getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,6 +113,7 @@ public class Main extends AppCompatActivity implements MainAdapter.ItemClickCall
                 i = new Intent(this, Settings.class);
                 startActivity(i);
                 return true;
+
 
             case R.id.menu_add_btn:                             // add button clicked
 
@@ -162,8 +194,8 @@ public class Main extends AppCompatActivity implements MainAdapter.ItemClickCall
         }
         //pass new data to adapter and update
         //TODO should not pass data like that if handling data from data base!!!
-        adapter.setListData(listData);
-        adapter.notifyDataSetChanged();
+        mainAdapter.setListData(listData);
+        mainAdapter.notifyDataSetChanged();
 
     }
 }
