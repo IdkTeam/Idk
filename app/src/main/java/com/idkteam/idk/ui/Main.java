@@ -2,6 +2,7 @@ package com.idkteam.idk.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.idkteam.idk.R;
 import com.idkteam.idk.adapter.MainAdapter;
@@ -56,15 +58,17 @@ public class Main extends AppCompatActivity implements MainAdapter.ItemClickCall
         getSupportActionBar().setTitle("Idk");
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+        tabLayout.addTab(tabLayout.newTab().setText("History"));
+        tabLayout.addTab(tabLayout.newTab().setText("Main"));
+        tabLayout.addTab(tabLayout.newTab().setText("Subscribed"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setTabTextColors(ContextCompat.getColorStateList(this, R.drawable.tab_selector));
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         final ViewPagerAdapter adapter = new ViewPagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(1); // set the "Main" tab as default
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -158,14 +162,21 @@ public class Main extends AppCompatActivity implements MainAdapter.ItemClickCall
             }
         };
 
-
         new AlertDialog.Builder(this)
                 .setTitle("Post type:")
                 .setAdapter(adapter, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
-                        //...
+                        if(item == 0){
+                            openCamera();
+                        }
                     }
                 }).show();
+    }
+
+    private void openCamera(){
+        Intent goToCamera = new Intent(this, ImagesToUpload.class);
+        startActivity(goToCamera);
+        //Toast.makeText(getApplicationContext(), "Opening camera...", Toast.LENGTH_SHORT).show();
     }
 
     @Override
